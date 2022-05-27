@@ -43,6 +43,21 @@ struct memUint16_t
     bool changed() { return (val == old_val); }
 };
 
+struct memString
+{
+    String val = "", old_val = "";
+    memString(String i) : val(i) {}
+    operator String() { return val; }
+    void operator=(String i)
+    {
+        old_val = val;
+        val = i;
+    }
+    String old() { return old_val; }
+    String current() { return val; }
+    bool changed() { return (val == old_val); }
+};
+
 void swap(uint16_t &val)
 {
     // CONVERTS 0X1234 TO 0X3412 FOR SERIAL COMMUNICATION.
